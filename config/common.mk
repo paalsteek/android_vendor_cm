@@ -70,8 +70,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dataroaming=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.build.selinux=1 \
-    persist.sys.root_access=1
+    ro.build.selinux=1
+
+#    Engle, commit to avoid there are two item
+#    persist.sys.root_access=1
+
+# Disable excessive dalvik debug messages
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.debug.alloc=0
 
 # Disable excessive dalvik debug messages
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -146,12 +152,12 @@ PRODUCT_COPY_FILES += \
 # T-Mobile theme engine
 include vendor/cm/config/themes_common.mk
 
+# Engle, remove BluetoothExt, it's doesnot work
 # Required CM packages
 PRODUCT_PACKAGES += \
     Development \
     LatinIME \
     Superuser \
-    BluetoothExt \
     su
 
 # Optional CM packages
